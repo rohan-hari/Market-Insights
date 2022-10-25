@@ -1,18 +1,19 @@
 const mongoose = require('mongoose');
 
 const dbConnect = () => {
-  const connectionParams = { useNewUrlParser: true };
-  mongoose.connect(process.env.DATABASE_CONN_URL, connectionParams);
-
-  mongoose.connection.on('connected', () => {
-    console.log('Connected to MongoDB');
-  });
-  mongoose.connection.on('error', (err) => {
-    console.log('Error while connecting to MongoDB');
-  });
-  mongoose.connection.on('disconnected', () => {
-    console.log('MongoDB disconnected');
-  });
+  const connectionParams = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    dbName: 'market-insights',
+  };
+  mongoose
+    .connect(process.env.DATABASE_CONN_URL, connectionParams)
+    .then(() => {
+      console.log('Connected to MongoDB');
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 module.exports = dbConnect;
