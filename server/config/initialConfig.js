@@ -1,4 +1,4 @@
-const Report = require('../models/report');
+const Report = require('../models/Report');
 const reports = require('./jsondata.json');
 
 const initialConfig = async () => {
