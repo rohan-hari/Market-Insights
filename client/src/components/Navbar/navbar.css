@@ -1,0 +1,9 @@
+.nav {
+  padding: 9px 30px 12px;
+  background-color: white;
+  border-bottom: 1px solid #dfe3eb;
+}
+.nav > .logo {
+  color: #3765ab;
+  font-size: 25px;
+}
