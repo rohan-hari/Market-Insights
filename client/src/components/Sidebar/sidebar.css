@@ -1,0 +1,38 @@
+.pro-sidebar {
+  position: absolute;
+  height: max-content;
+  width: 250px;
+  margin: 20px;
+  color: #262626;
+}
+.pro-sidebar > .pro-sidebar-inner {
+  border-radius: 10px;
+  background: #ffffff;
+}
+.pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item {
+  font-size: 16px;
+  cursor: default;
+}
+.pro-sidebar .pro-menu .pro-menu-item.pro-sub-menu > .pro-inner-item {
+  text-align: left;
+  margin: 12px 0px;
+  border-top: 1px solid #eef1f4;
+  cursor: pointer;
+}
+.pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item:focus,
+.pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item:hover {
+  color: #262626;
+}
+.pro-sidebar .pro-menu > ul > .pro-sub-menu > .pro-inner-list-item > div > ul {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.pro-sidebar .pro-menu > ul > .pro-sub-menu > .pro-inner-list-item {
+  max-height: 220px;
+  overflow-y: auto;
+  background-color: #fdfdfd;
+}
+.pro-sidebar .pro-menu .pro-menu-item.pro-sub-menu .pro-inner-list-item {
+  padding-left: 6px;
+}
