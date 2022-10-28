@@ -1,0 +1,31 @@
+.main-section {
+  margin-left: 290px;
+}
+.chart-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.chart-box-wFull {
+  width: 68%;
+  margin-top: 20px;
+  padding: 20px;
+  max-width: 1300px;
+  min-width: 700px;
+  max-height: 350px;
+  border-radius: 15px;
+  background-color: white;
+}
+.chart-box-wHalf {
+  margin: 20px 10px 0 10px;
+  width: 32%;
+  padding: 20px;
+  max-width: 650px;
+  min-width: 400px;
+  max-height: 350px;
+  border-radius: 15px;
+  background-color: white;
+}

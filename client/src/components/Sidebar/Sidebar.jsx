@@ -13,7 +13,7 @@ export default function SidebarFilters() {
     { slug: 'region', title: 'Region' },
     { slug: 'pestle', title: 'PESTLE' },
     { slug: 'source', title: 'Source' },
-    { country: 'country', title: 'Country' },
+    { slug: 'country', title: 'Country' },
   ];
   const [filterOptions, setFilterOptions] = useState(null);
   // const [loading, setLoading] = useState(true);
@@ -21,10 +21,10 @@ export default function SidebarFilters() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get(
+        const filters = await axios.get(
           `http://localhost:3001/api/filterOptions`
         );
-        setFilterOptions(response.data[0]);
+        setFilterOptions(filters.data[0]);
       } catch (err) {
         console.log(err);
       }
