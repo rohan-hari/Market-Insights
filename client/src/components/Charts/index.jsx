@@ -36,7 +36,6 @@ ChartJS.register(
 
 export default function Index() {
   const [insightData, setInsightData] = useState([]);
-  const [chartOptions, setChartOptions] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
@@ -48,45 +47,27 @@ export default function Index() {
       }
     };
     getData();
-    setChartOptions({
-      maintainAspectRatio: false,
-      responsive: true,
-      legend: {
-        display: false,
-      },
-      tooltips: {
-        callbacks: {
-          label: function (tooltipItem) {
-            return tooltipItem.yLabel;
-          },
-        },
-      },
-      scales: {
-        x: {
-          grid: {
-            display: false,
-          },
-        },
-        y: {
-          grid: {
-            display: false,
-          },
-        },
-      },
-    });
   }, []);
+
+  const charts = [
+    { component: Year, title: 'Year', width: 'wFull' },
+    { component: Relevance, title: 'Relevance', width: 'wHalf' },
+    { component: Topic, title: 'Topic', width: 'wHalf' },
+    { component: Intensity, title: 'Intensity', width: 'wFull' },
+    { component: Region, title: 'Region', width: 'wHalf' },
+    { component: Likelihood, title: 'Likelihood', width: 'wHalf' },
+    { component: Country, title: 'Country', width: 'wFull' },
+  ];
 
   return (
     <div className="main-section">
-      {/* prettier-ignore */}
       <div className="chart-container">
-        <div className="chart-box-wFull"><Year insightData={insightData} chartOptions={chartOptions} /></div>
-        <div className="chart-box-wHalf"><Relevance insightData={insightData} /></div>
-        <div className="chart-box-wHalf"><Topic insightData={insightData} /></div>
-        <div className="chart-box-wFull"><Intensity insightData={insightData} /></div>
-        <div className="chart-box-wHalf"><Likelihood insightData={insightData} /></div>
-        <div className="chart-box-wHalf"><Region insightData={insightData} /></div>
-        <div className="chart-box-wFull"><Country insightData={insightData} /></div>
+        {charts.map((chart, id) => (
+          <div key={id} className={`chart-box-${chart.width}`}>
+            <div className="chart-title">{chart.title}</div>
+            <chart.component insightData={insightData} />
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 import { Line } from 'react-chartjs-2';
 
-export default function Year({ insightData, chartOptions }) {
+export default function Year({ insightData }) {
   const [chartData, setChartData] = useState({ datasets: [] });
+  const [chartOptions, setChartOptions] = useState([]);
 
   let yearMap = {};
   if (insightData) {
@@ -25,12 +26,35 @@ export default function Year({ insightData, chartOptions }) {
         {
           // label: 'Year',
           data: values,
-          borderColor: 'rgb(53, 162, 235)',
-          backgroundColor: 'rgba(53, 162, 235, 1)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          backgroundColor: 'rgba(255, 99, 132, 1)',
+          pointRadius: 4,
         },
       ],
     });
+    setChartOptions({
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+      scales: {
+        x: {
+          grid: {
+            display: false,
+          },
+        },
+        y: {
+          grid: {
+            display: false,
+          },
+        },
+      },
+    });
   }, [insightData]);
 
-  return <Line data={chartData} options={chartOptions} />;
+  if (keys.length) return <Line data={chartData} options={chartOptions} />;
+  return <div>No data to show</div>;
 }

@@ -4,7 +4,7 @@ import { Bar } from 'react-chartjs-2';
 
 export default function Relevance({ insightData }) {
   const [chartData, setChartData] = useState({ datasets: [] });
-  const [chartOption, setChartOption] = useState([]);
+  const [chartOptions, setChartOptions] = useState([]);
 
   let relevanceMap = {};
   if (insightData) {
@@ -14,7 +14,6 @@ export default function Relevance({ insightData }) {
     }
   }
 
-  console.log(relevanceMap);
   let keys = Object.keys(relevanceMap),
     values = Object.values(relevanceMap);
 
@@ -24,12 +23,12 @@ export default function Relevance({ insightData }) {
       datasets: [
         {
           data: values,
-          borderColor: 'rgb(53, 162, 235)',
-          backgroundColor: 'rgba(53, 162, 235, 1)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          backgroundColor: 'rgba(75, 192, 192, 1)',
         },
       ],
     });
-    setChartOption({
+    setChartOptions({
       indexAxis: 'y',
       elements: {
         bar: {
@@ -40,10 +39,11 @@ export default function Relevance({ insightData }) {
       plugins: {
         legend: {
           display: false,
-          position: 'right',
+          // position: 'right',
         },
       },
     });
   }, [insightData]);
-  return <Bar options={chartOption} data={chartData} />;
+  if (keys.length) return <Bar options={chartOptions} data={chartData} />;
+  return <div>No data to show</div>;
 }
