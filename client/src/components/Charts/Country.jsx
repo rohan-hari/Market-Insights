@@ -46,7 +46,7 @@ export default function Country({ insightData }) {
       showLine: false,
       scales: {
         y: {
-          max: values.length > 10 ? 30 : null,
+          max: values.length > 7 ? 30 : null,
           grid: {
             display: false,
           },

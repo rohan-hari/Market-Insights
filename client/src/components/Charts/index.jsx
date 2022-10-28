@@ -16,6 +16,7 @@ import {
 } from 'chart.js';
 // prettier-ignore
 import { Year, Intensity, Topic, Relevance, Region, Likelihood, Country } from './export';
+import { convertKeyValueToObject } from '../../utils/helpers';
 import axios from 'axios';
 import './styles.css';
 
@@ -34,20 +35,28 @@ ChartJS.register(
   Legend
 );
 
-export default function Index() {
+export default function Index({ checkedValue }) {
   const [insightData, setInsightData] = useState([]);
+  let arr = [];
+  arr.push(convertKeyValueToObject(checkedValue));
+
+  const keyPair = arr[0];
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const reports = await axios.get(`http://localhost:3001/api/reports`);
+        const reports = await axios({
+          url: 'http://localhost:3001/api/reports',
+          method: 'get',
+          params: keyPair,
+        });
         setInsightData(reports.data);
       } catch (err) {
         console.log(err);
       }
     };
     getData();
-  }, []);
+  }, [checkedValue]);
 
   const charts = [
     { component: Year, title: 'Year', width: 'wFull' },

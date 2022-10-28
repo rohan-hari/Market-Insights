@@ -36,3 +36,6 @@
 .pro-sidebar .pro-menu .pro-menu-item.pro-sub-menu .pro-inner-list-item {
   padding-left: 6px;
 }
+input[type='checkbox'] {
+  vertical-align: middle;
+}

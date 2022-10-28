@@ -44,7 +44,7 @@ export default function Intensity({ insightData }) {
           },
         },
         y: {
-          max: values.length > 8 ? 120 : null,
+          max: values.length > 7 ? 120 : null,
           grid: {
             display: false,
           },
